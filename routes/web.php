@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('homepage');
 });
 
@@ -24,3 +24,5 @@ Route::group( ['prefix' => 'auth', 'namespace' => 'Auth'], function() {
     Route::get( 'auth/login', 'LoginController@show' )->name( 'auth.login' );
 
 } );
+
+Route::resource( 'tasks', 'TaskController' );

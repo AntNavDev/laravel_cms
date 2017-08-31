@@ -21,6 +21,9 @@
         .logout-button {
             background-color: #FF0000;
         }
+        .sidebar {
+            background-color: #6495ED;
+        }
         .align-right {
             float: right;
             margin: 5px 5px 5px 5px;
@@ -29,7 +32,7 @@
 </head>
 
 <body>
-    <div>
+    <div id="profile-bar" class="col-md-12">
         @if( ! Auth::check() )
             <a href="{{ route( 'auth.login' ) }}" class="login-button align-right btn">Login</a>
         @else
@@ -40,8 +43,16 @@
             </form>
         @endif
     </div>
-    <div>
+    <div id="content-container" class="col-md-12">
         {{-- <h1>Welcome</h1> --}}
+        <div id="sidebar" class="col-md-2 sidebar">
+            @if( Auth::check() )
+                @include( 'users.sidebar' )
+            @endif
+        </div>
+        <div id="" class="col-md-10">
+
+        </div>
     </div>
 </body>
 
