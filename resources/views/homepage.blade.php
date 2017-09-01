@@ -28,6 +28,9 @@
             float: right;
             margin: 5px 5px 5px 5px;
         }
+        .sidebar-link {
+            color: #000000;
+        }
     </style>
 </head>
 
@@ -51,7 +54,7 @@
             @endif
         </div>
         <div id="" class="col-md-10">
-
+            @yield( 'content' )
         </div>
     </div>
 </body>

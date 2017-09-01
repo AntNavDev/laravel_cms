@@ -14,4 +14,10 @@ class Task extends Model
     protected $table = 'tasks';
 
 
+    public function tasks()
+    {
+        return $this->belongsTo( 'App\User' );
+    }
+
+
 }

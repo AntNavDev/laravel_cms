@@ -15,6 +15,8 @@ Route::get('/', function() {
     return view('homepage');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -23,6 +25,10 @@ Route::group( ['prefix' => 'auth', 'namespace' => 'Auth'], function() {
 
     Route::get( 'auth/login', 'LoginController@show' )->name( 'auth.login' );
 
+} );
+
+Route::get( 'tasks', function() {
+    return view( '/users/user-tasks' );
 } );
 
 Route::resource( 'tasks', 'TaskController' );
