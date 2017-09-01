@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function() {
-    return view('homepage');
+    return view('welcome-partial');
 });
 
 Auth::routes();
@@ -30,5 +30,3 @@ Route::get( 'tasks', function() {
 } );
 
 Route::resource( 'tasks', 'TaskController' );
-
-Route::delete( 'tasks/{task}', 'TaskController@destroy' );

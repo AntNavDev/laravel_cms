@@ -3,19 +3,25 @@
 @section( 'content' )
     <table class="table-stripes">
         <tr>
-            <h3><th>Task</th></h3>
-            <h3><th>Client</th></h3>
+            <th>Task</th>
+            <th>Client</th>
+            <th class="action-header">Action</th>
         </tr>
         @foreach( $tasks as $task )
-            <form action="tasks/{{ $task->id }}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
+
                 <tr>
                     <td>{{ $task->task_name }}</td>
                     <td>{{ $task->client }}</td>
-                    <td><button class="btn remove-task-button align-right">Remove</button></td>
+                    <td class="align-right">
+                        <a href="tasks/{{ $task->id }}/edit" class="btn task-button edit-task-button">Edit</a>
+                        <form action="tasks/{{ $task->id }}" method="POST" style="display: inline-block;">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button class="btn task-button remove-task-button">Remove</button>
+                        </form>
+                    </td>
                 </tr>
-            </form>
+
         @endforeach
     </table>
 @endsection
