@@ -13,6 +13,14 @@ class Task extends Model
     */
     protected $table = 'tasks';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'task_name', 'client',
+    ];
 
     public function tasks()
     {
