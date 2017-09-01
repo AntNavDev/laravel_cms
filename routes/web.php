@@ -15,8 +15,6 @@ Route::get('/', function() {
     return view('homepage');
 });
 
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -32,3 +30,5 @@ Route::get( 'tasks', function() {
 } );
 
 Route::resource( 'tasks', 'TaskController' );
+
+Route::delete( 'tasks/{task}', 'TaskController@destroy' );
