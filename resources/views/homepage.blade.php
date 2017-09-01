@@ -9,29 +9,10 @@
 </script>
 
 <!-- Bootstrap -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 <head>
     <title>{{ config( 'app.name' ) }}</title>
-
-    <style>
-        .login-button {
-            background-color: #44F500;
-        }
-        .logout-button {
-            background-color: #FF0000;
-        }
-        .sidebar {
-            background-color: #6495ED;
-        }
-        .align-right {
-            float: right;
-            margin: 5px 5px 5px 5px;
-        }
-        .sidebar-link {
-            color: #000000;
-        }
-    </style>
 </head>
 
 <body>
@@ -46,15 +27,17 @@
             </form>
         @endif
     </div>
-    <div id="content-container" class="col-md-12">
+    <div id="" class="col-md-12">
         {{-- <h1>Welcome</h1> --}}
         <div id="sidebar" class="col-md-2 sidebar">
             @if( Auth::check() )
-                @include( 'users.sidebar' )
+                @include( 'users.user-sidebar' )
             @endif
         </div>
-        <div id="" class="col-md-10">
+        <div id="content-container" class="col-md-8">
             @yield( 'content' )
+        </div>
+        <div class="col-md-2">
         </div>
     </div>
 </body>
