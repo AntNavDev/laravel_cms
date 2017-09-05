@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Task;
 
 Route::get('/', function() {
     return view('welcome-partial');
@@ -17,12 +18,12 @@ Route::get('/', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group( ['prefix' => 'auth', 'namespace' => 'Auth'], function() {
 
     Route::get( 'auth/login', 'LoginController@show' )->name( 'auth.login' );
 
 } );
+
+Route::get( 'users/user-tasks', 'TaskController@myTasks' )->name( 'user.tasks' );
 
 Route::resource( 'tasks', 'TaskController' );

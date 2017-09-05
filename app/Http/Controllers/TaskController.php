@@ -16,7 +16,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::with( 'user' )->get();
-        return view( 'users/user-tasks', compact( 'tasks' ) );
+        return view( 'tasks/index', compact( 'tasks' ) );
     }
 
     /**
@@ -92,5 +92,11 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect()->back();
+    }
+
+    public function myTasks()
+    {
+        $tasks = Task::with( 'user' )->get();
+        return view( 'users/user-tasks', compact( 'tasks' ) );
     }
 }

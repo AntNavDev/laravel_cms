@@ -28,6 +28,10 @@
     margin: 7px;
     padding: 4px;
 }
+.add-task-button {
+    background-color: #39EA6E;
+    color: #FFFFFF;
+}
 .edit-task-button {
     background-color: #5D81CA;
     color: #FFFFFF;
@@ -50,6 +54,9 @@
 .title-standout {
     text-decoration: underline;
 }
+a:hover {
+    color: #000000;
+}
 table {
     width: 100%;
 }
@@ -59,4 +66,7 @@ tr > th {
 }
 body {
     background-color: #FFFFFF;
+}
+td {
+    color: #000000;
 }

@@ -28,7 +28,6 @@
         @endif
     </div>
     <div id="" class="col-md-12">
-        {{-- <h1>Welcome</h1> --}}
         <div id="sidebar" class="col-md-2 sidebar">
             @if( Auth::check() )
                 @include( 'users.user-sidebar' )
