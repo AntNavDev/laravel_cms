@@ -25,8 +25,4 @@ Route::group( ['prefix' => 'auth', 'namespace' => 'Auth'], function() {
 
 } );
 
-Route::get( 'tasks', function() {
-    return view( '/users/user-tasks' );
-} );
-
 Route::resource( 'tasks', 'TaskController' );

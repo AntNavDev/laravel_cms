@@ -22,7 +22,7 @@ class Task extends Model
         'task_name', 'client',
     ];
 
-    public function tasks()
+    public function user()
     {
         return $this->belongsTo( 'App\User' );
     }

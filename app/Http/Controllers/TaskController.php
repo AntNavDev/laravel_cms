@@ -15,7 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::with( 'tasks' )->get();
+        $tasks = Task::with( 'user' )->get();
         return view( 'users/user-tasks', compact( 'tasks' ) );
     }
 
@@ -72,10 +72,12 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+
+        // dd( $task );
         $task->fill( $request->toArray() );
         $task->save();
 
-        return redirect( '/tasks' );
+        return redirect()->route( 'tasks.index' );
     }
 
     /**
