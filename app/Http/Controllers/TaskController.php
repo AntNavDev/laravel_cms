@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Task;
+use App\User;
 
 class TaskController extends Controller
 {
@@ -26,7 +27,15 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view( 'tasks/create' );
+        $developers = User::all();
+        $developers_list = array();
+
+        foreach( $developers as $developer )
+        {
+            $developers_list[ $developer->getFullName() ] = $developer->getFullName();
+        }
+
+        return view( 'tasks/create', compact( 'developers_list' ) );
     }
 
     /**
@@ -63,7 +72,16 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         $task = Task::find( $task->id );
-        return view( 'tasks/edit', compact( 'task' ) );
+
+        $developers = User::all();
+        $developers_list = array();
+
+        foreach( $developers as $developer )
+        {
+            $developers_list[ $developer->getFullName() ] = $developer->getFullName();
+        }
+
+        return view( 'tasks/edit', compact( 'task', 'developers_list' ) );
     }
 
     /**

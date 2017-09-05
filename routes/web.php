@@ -27,3 +27,4 @@ Route::group( ['prefix' => 'auth', 'namespace' => 'Auth'], function() {
 Route::get( 'users/user-tasks', 'TaskController@myTasks' )->name( 'tasks.myTasks' );
 
 Route::resource( 'tasks', 'TaskController' );
+

@@ -25,18 +25,23 @@
                 {{ method_field( 'PUT' ) }}
 
                 <h3 class="title-standout">Edit Task</h3>
-                <label for="Task Name">Task Name</label><br>
-                <input type="text" id="task_name" name="task_name" class="task-input" placeholder="Enter Updated Task Name" required><br><br>
-                <label for="Client Name">Client Name</label><br>
-                <input type="text" id="client" name="client" class="task-input" placeholder="Enter Updated Client Name" required><br><br>
-                <label for="Developer Name">Developers</label><br>
-                <input type="text" id="developers" name="developers" class="task-input" placeholder="Enter Updated Developer Name" required><br><br>
-                <label for="Hours Worked">Hours Worked</label><br>
-                <input type="text" id="hours_worked" name="hours_worked" class="task-input" placeholder="Enter Hours Worked" required><br><br>
-                <label for="Hours To Build">Hours To Build</label><br>
-                <input type="text" id="hours_to_build" name="hours_to_build" class="task-input" placeholder="Enter Hours To Build" required><br><br>
+                <label for="Task Name">Updated Task Name</label><br>
+                <input type="text" id="task_name" name="task_name" class="form-control task-input" placeholder="" required><br><br>
+                <label for="Client Name">Updated Client Name</label><br>
+                <input type="text" id="client" name="client" class="form-control task-input" placeholder="" required><br><br>
+                <label for="Developer Name">Updated Developers</label><br>
+                <select id="developers" name="developers" class="form-control task-input">
+                    <option value="default">Select One</option>
+                    @foreach( $developers_list as $developer )
+                        <option value={{ $developer }}>{{ $developer }}</option>
+                    @endforeach
+                </select><br><br>
+                <label for="Hours Worked">Updated Hours Worked</label><br>
+                <input type="text" id="hours_worked" name="hours_worked" class="form-control task-input" placeholder="" required><br><br>
+                <label for="Hours To Build">Updated Hours To Build</label><br>
+                <input type="text" id="hours_to_build" name="hours_to_build" class="form-control task-input" placeholder="" required><br><br>
 
-                <button class="btn edit-task-button">Update Task Information</button>
+                <button class="btn add-task-button">Update Task Information</button>
             </form>
         </div>
 
