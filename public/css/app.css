@@ -54,6 +54,15 @@
 .title-standout {
     text-decoration: underline;
 }
+.selections {
+    border: 1px;
+}
+.selected-area {
+    border: 1px solid #000000;
+}
+.task-input {
+    width: 30%;
+}
 a:hover {
     color: #000000;
 }

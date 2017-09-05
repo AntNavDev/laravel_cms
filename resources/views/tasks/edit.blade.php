@@ -20,21 +20,21 @@
         </div>
 
         <div class="col-md-6">
-            <form action={{ route( 'tasks.update', $task ) }} method="POST" class="align-right">
+            <form action={{ route( 'tasks.update', $task ) }} method="POST">
                 {{ csrf_field() }}
                 {{ method_field( 'PUT' ) }}
 
                 <h3 class="title-standout">Edit Task</h3>
                 <label for="Task Name">Task Name</label><br>
-                <input type="text" id="task_name" name="task_name" placeholder="Enter Updated Task Name..." required><br><br>
+                <input type="text" id="task_name" name="task_name" class="task-input" placeholder="Enter Updated Task Name" required><br><br>
                 <label for="Client Name">Client Name</label><br>
-                <input type="text" id="client" name="client" placeholder="Enter Updated Client Name" required><br><br>
+                <input type="text" id="client" name="client" class="task-input" placeholder="Enter Updated Client Name" required><br><br>
                 <label for="Developer Name">Developers</label><br>
-                <input type="text" id="developers" name="developers" placeholder="Enter Updated Developer Name" required><br><br>
+                <input type="text" id="developers" name="developers" class="task-input" placeholder="Enter Updated Developer Name" required><br><br>
                 <label for="Hours Worked">Hours Worked</label><br>
-                <input type="text" id="hours_worked" name="hours_worked" placeholder="Enter Hours Worked" required><br><br>
+                <input type="text" id="hours_worked" name="hours_worked" class="task-input" placeholder="Enter Hours Worked" required><br><br>
                 <label for="Hours To Build">Hours To Build</label><br>
-                <input type="text" id="hours_to_build" name="hours_to_build" placeholder="Enter Hours To Build" required><br><br>
+                <input type="text" id="hours_to_build" name="hours_to_build" class="task-input" placeholder="Enter Hours To Build" required><br><br>
 
                 <button class="btn edit-task-button">Update Task Information</button>
             </form>

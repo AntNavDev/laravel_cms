@@ -26,7 +26,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view( 'tasks/create' );
     }
 
     /**
@@ -37,7 +37,10 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = Task::create( $request->toArray() );
+        $task->save();
+
+        return redirect()->route( 'tasks.index' );
     }
 
     /**
@@ -72,8 +75,6 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-
-        // dd( $task );
         $task->fill( $request->toArray() );
         $task->save();
 
@@ -91,7 +92,7 @@ class TaskController extends Controller
         $task = Task::find( $task->id );
         $task->delete();
 
-        return redirect()->back();
+        return redirect()->route( 'tasks.index' );
     }
 
     public function myTasks()
