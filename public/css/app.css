@@ -47,6 +47,9 @@
 .action-header {
     text-align: center;
 }
+.title-standout {
+    text-decoration: underline;
+}
 table {
     width: 100%;
 }

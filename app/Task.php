@@ -19,7 +19,7 @@ class Task extends Model
      * @var array
      */
     protected $fillable = [
-        'task_name', 'client',
+        'task_name', 'client', 'developers', 'hours_worked', 'hours_to_build',
     ];
 
     public function user()

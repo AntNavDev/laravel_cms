@@ -11,9 +11,9 @@
             <th class="action-header">Action</th>
         </tr>
         @foreach( $tasks as $task )
-
+            @if( $task->developers === Auth::user()->getFullName() )
                 <tr>
-                    <td>{{ $task->task_name }}</td>
+                    <td><a href={{ route( 'tasks.edit', $task ) }}>{{ $task->task_name }}</a></td>
                     <td>{{ $task->client }}</td>
                     <td>{{ $task->developers }}</td>
                     <td>{{ $task->hours_worked }}</td>
@@ -27,7 +27,7 @@
                         </form>
                     </td>
                 </tr>
-
+            @endif
         @endforeach
     </table>
 @endsection
