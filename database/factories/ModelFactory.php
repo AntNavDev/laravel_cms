@@ -27,8 +27,11 @@ $factory->define(App\User::class, function (Faker $faker) {
 $factory->define( App\Task::class, function( Faker $faker ) {
 
     return [
-        'task_name' => $faker->text( 35 ),
-        'client'    => $faker->name(),
+        'task_name'  => $faker->text( 35 ),
+        'client'     => $faker->name(),
+        'developers' => $faker->name(),
+        'hours_worked' => round( $faker->randomFloat( NULL, 1, 200 ), 1 ),
+        'hours_to_build' => round( $faker->randomFloat( NULL, 0, 250 ), 1 ),
     ];
 
 } );
