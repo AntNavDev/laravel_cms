@@ -31,7 +31,11 @@
                         <td><a href="{{ route( 'tasks.edit', $task ) }}">{{ $task->task_name }}</a></td>
                         <td>{{ $task->client }}</td>
                         <td>{{ $task->developers }}</td>
-                        <td>{{ $task->hours_worked }}</td>
+                        @if( $task->hours_worked < $task->hours_to_build )
+                            <td style="color: #0BAA1E">{{ $task->hours_worked }}</td>
+                        @else
+                            <td style="color: #FF161D">{{ $task->hours_worked }}</td>
+                        @endif
                         <td>{{ $task->hours_to_build }}</td>
                         <td class="align-right">
                             <a href="{{ route( 'tasks.edit', $task ) }}" class="btn task-button edit-task-button">Edit</a>

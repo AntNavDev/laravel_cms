@@ -118,4 +118,9 @@ class TaskController extends Controller
         $tasks = Task::with( 'user' )->get();
         return view( 'users/user-tasks', compact( 'tasks' ) );
     }
+
+    public function increaseHoursWorked( Request $request )
+    {
+        dd( $request->toArray() );
+    }
 }

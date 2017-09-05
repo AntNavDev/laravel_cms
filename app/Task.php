@@ -27,5 +27,4 @@ class Task extends Model
         return $this->belongsTo( 'App\User' );
     }
 
-
 }

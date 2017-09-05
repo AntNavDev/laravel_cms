@@ -19,7 +19,19 @@
 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-3">
+            <form action="{{ route( 'homepage' ) }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field( 'PUT' ) }}
+
+                <label for="add_hours">Add Hours</label>
+                <input type="text" id="" name="">
+                <button>Add Hours Worked</button>
+            </form>
+
+        </div>
+
+        <div class="col-md-3">
             <form action="{{ route( 'tasks.update', $task ) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field( 'PUT' ) }}
