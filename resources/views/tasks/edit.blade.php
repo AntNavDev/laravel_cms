@@ -1,4 +1,4 @@
-@extends( 'homepage' )
+@extends( 'layouts/homepage' )
 
 @section( 'content' )
 
@@ -20,12 +20,12 @@
         </div>
 
         <div class="col-md-3">
-            <form action="{{ route( 'homepage' ) }}" method="POST">
+            <form action="{{ route( 'tasks.update', $task ) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field( 'PUT' ) }}
 
-                <label for="add_hours">Add Hours</label>
-                <input type="text" id="" name="">
+                <label for="hours_increase">Add Hours</label>
+                <input type="text" id="hours_increase" name="hours_increase" class="form-control task-input" placeholder="" required><br><br>
                 <button>Add Hours Worked</button>
             </form>
 

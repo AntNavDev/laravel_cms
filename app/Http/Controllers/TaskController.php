@@ -93,10 +93,17 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $task->fill( $request->toArray() );
+        if( $request[ 'hours_increase' ] )
+        {
+            $task->hours_worked += $request[ 'hours_increase' ];
+        }
+        else
+        {
+            $task->fill( $request->toArray() );
+        }
         $task->save();
 
-        return redirect()->route( 'tasks.index' );
+        return redirect()->route( 'tasks.edit', $task );
     }
 
     /**
@@ -119,8 +126,4 @@ class TaskController extends Controller
         return view( 'users/user-tasks', compact( 'tasks' ) );
     }
 
-    public function increaseHoursWorked( Request $request )
-    {
-        dd( $request->toArray() );
-    }
 }

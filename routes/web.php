@@ -12,6 +12,8 @@
 */
 use App\Task;
 
+Route::resource( 'tasks', 'TaskController' );
+
 Route::get('/', function() {
     return view('welcome-partial');
 })->name( 'homepage' );
@@ -25,6 +27,3 @@ Route::group( ['prefix' => 'auth', 'namespace' => 'Auth'], function() {
 } );
 
 Route::get( 'users/user-tasks', 'TaskController@myTasks' )->name( 'tasks.myTasks' );
-
-Route::resource( 'tasks', 'TaskController' );
-
