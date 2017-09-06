@@ -10,9 +10,9 @@
 
         <h3 class="title-standout">Create Task</h3>
         <label for="task_name">Task Name</label><br>
-        <input type="text" id="task_name" name="task_name" class="form-control task-input" placeholder="Enter Task Name" required><br><br>
+        <input type="text" id="task_name" name="task_name" class="form-control task-input" placeholder="Enter Task Name"><br><br>
         <label for="client">Client Name</label><br>
-        <input type="text" id="client" name="client" class="form-control task-input" placeholder="Enter Client Name" required><br><br>
+        <input type="text" id="client" name="client" class="form-control task-input" placeholder="Enter Client Name"><br><br>
         <label for="developers">Developers</label><br>
         <select id="developers" name="developers" class="form-control task-input">
             <option value="default">Select One</option>
@@ -20,10 +20,8 @@
                 <option value="{{ $developer }}">{{ $developer }}</option>
             @endforeach
         </select><br><br>
-        <label for="hours_worked">Hours Worked</label><br>
-        <input type="text" id="hours_worked" name="hours_worked" class="form-control task-input" placeholder="Enter Hours Worked" required><br><br>
         <label for="hours_to_build">Hours To Build</label><br>
-        <input type="text" id="hours_to_build" name="hours_to_build" class="form-control task-input" placeholder="Enter Hours To Build" required><br><br>
+        <input type="text" id="hours_to_build" name="hours_to_build" class="form-control task-input" placeholder="Enter Hours To Build"><br><br>
 
         <button class="btn add-task-button">Create New Task</button>
     </form>

@@ -14,6 +14,10 @@ use App\Task;
 
 Route::resource( 'tasks', 'TaskController' );
 
+Route::resource( 'task_time', 'TaskTimeController', [ 'only' => [
+    'store'
+] ] );
+
 Route::get('/', function() {
     return view('welcome-partial');
 })->name( 'homepage' );
