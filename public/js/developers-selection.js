@@ -8,7 +8,6 @@ jQuery('document').ready( function(){
             $( '#selected_developers' ).append( '<div id="' + $developers_list.val() + '"><div class="btn remove-developer-button">&times;</div>' + $developers_list.val() + '<br></div>' );
             $( '#developers' ).val( getDevsOnProject() );
         }
-        console.log( $( '#developers' ).val() );
         $developers_list.val( 'default' );
 
     } );
