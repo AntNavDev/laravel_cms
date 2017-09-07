@@ -32,12 +32,19 @@
     margin: 7px;
     padding: 4px;
 }
+.remove-option-button {
+    background-color: transparent;
+}
 .add-task-button {
     background-color: #39EA6E;
     color: #FFFFFF;
 }
 .edit-task-button {
     background-color: #5D81CA;
+    color: #FFFFFF;
+}
+.remove-task-button {
+    background-color: #FF0000;
     color: #FFFFFF;
 }
 .table-stripes > tbody > tr:nth-of-type(odd) {
@@ -62,10 +69,6 @@
 }
 .task-input {
     width: 250px;
-}
-.remove-option-button {
-    background-color: transparent;
-    border: transparent;
 }
 .task-time-table {
     height: 60px;

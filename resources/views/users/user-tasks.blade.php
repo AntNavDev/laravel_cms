@@ -51,7 +51,7 @@
                                     <form action="{{ route( 'tasks.destroy', $task ) }}" method="POST" style="display: inline-block;">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button class="btn task-button remove-option-button" onclick="return confirm( 'Remove record \'{{ $task->task_name }}\'? Pressing \'ok\' will permanantly remove \'{{ $task->task_name }}\' from your database.' )">Remove</button>
+                                        <button class="btn task-button remove-option-button remove-task-button" onclick="return confirm( 'Remove record \'{{ $task->task_name }}\'? Pressing \'ok\' will permanantly remove \'{{ $task->task_name }}\' from your database.' )">Remove</button>
                                     </form>
                                 @endif
                             </td>

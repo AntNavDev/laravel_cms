@@ -18,7 +18,7 @@
                             <form action="{{ route( 'task_time.destroy', $time_entry->id ) }}" method="POST" style="display: inline-block;">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button class="btn task-button remove-option-button">&times;</button>
+                                <button style="font-size: 20px;" class="btn task-button remove-option-button">&times;</button>
                             </form>
                         </td>
                     @else
