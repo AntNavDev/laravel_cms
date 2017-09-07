@@ -18,15 +18,16 @@
 <body>
     <div class="row">
         <div id="profile-bar" class="col-md-12">
-            @if( ! Auth::check() )
+            @guest
                 <a href="{{ route( 'auth.login' ) }}" class="login-button align-right btn">Login</a>
-            @else
+            @endguest
+            @auth
                 <p class="align-right">Welcome, {{ Auth::user()->getFullName() }}</p>
                 <a href="{{ route( 'logout' ) }}" onclick="event.preventDefault(); document.getElementById( 'logout-form' ).submit();" class="logout-button align-right btn">Logout</a>
                 <form id="logout-form" action="{{ route( 'logout' ) }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-            @endif
+            @endauth
         </div>
     </div>
 

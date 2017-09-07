@@ -71,7 +71,7 @@
                     <input type="text" id="task_name" name="task_name" class="form-control task-input" placeholder=""><br><br>
                     <label for="client">Updated Client Name</label><br>
                     <input type="text" id="client" name="client" class="form-control task-input" placeholder=""><br><br>
-                   <label for="developers_list">Update Developers</label><br>
+                    <label for="developers_list">Update Developers</label><br>
                     <select id="developers_list" name="developers_list" class="form-control task-input">
                         <option value="default">Select One</option>
                         @foreach( $developers_list as $developer )
