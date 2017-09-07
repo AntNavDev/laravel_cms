@@ -159,7 +159,10 @@ class TaskController extends Controller
     public function myTasks()
     {
         $tasks = Task::with( 'user' )->get();
-        return view( 'users/user-tasks', compact( 'tasks' ) );
+
+        $time_entries = TaskTime::all();
+
+        return view( 'users/user-tasks', compact( 'tasks', 'time_entries' ) );
     }
 
 }

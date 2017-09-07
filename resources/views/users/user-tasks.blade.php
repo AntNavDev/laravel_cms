@@ -32,10 +32,11 @@
                             <td><a href="{{ route( 'tasks.edit', $task ) }}">{{ $task->task_name }}</a></td>
                             <td>{{ $task->client }}</td>
                             <td>{{ $task->developers }}</td>
-                            @if( $task->hours_worked < $task->hours_to_build )
-                                <td style="color: #0BAA1E">{{ $task->hours_worked }}</td>
+                            <?php $time_for_task = $time_entries->where( 'task_id', '=', $task->id ); ?>
+                            @if( $time_for_task->sum( 'hours' ) < $task->hours_to_build )
+                                <td style="color: #0BAA1E">{{ $time_for_task->sum( 'hours' ) }}</td>
                             @else
-                                <td style="color: #FF161D">{{ $task->hours_worked }}</td>
+                                <td style="color: #FF161D">{{ $time_for_task->sum( 'hours' ) }}</td>
                             @endif
                             <td>{{ $task->hours_to_build }}</td>
                             <td class="align-right">

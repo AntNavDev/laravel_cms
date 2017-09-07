@@ -52,7 +52,7 @@ class TaskTimeController extends Controller
             $developers_list[ $developer->getFullName() ] = $developer->getFullName();
         }
 
-        return redirect()->route( 'tasks.edit', compact( 'task', 'time_entries', 'developers_list' ) );
+        return redirect()->back();
     }
 
     /**
