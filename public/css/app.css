@@ -40,10 +40,6 @@
     background-color: #5D81CA;
     color: #FFFFFF;
 }
-.remove-task-button {
-    background-color: #FF0000;
-    color: #FFFFFF;
-}
 .table-stripes > tbody > tr:nth-of-type(odd) {
     background-color: #C6D1E1;
 }
@@ -67,9 +63,12 @@
 .task-input {
     width: 250px;
 }
-.remove-developer-button {
+.remove-option-button {
     background-color: transparent;
     border: transparent;
+}
+.task-time-table {
+    height: 60px;
 }
 a:hover {
     color: #000000;

@@ -5,14 +5,14 @@ jQuery('document').ready( function(){
 
         if( $developers_list.val() !== 'default' && document.getElementById( $developers_list.val() ) === null )
         {
-            $( '#selected_developers' ).append( '<div id="' + $developers_list.val() + '"><div class="btn remove-developer-button">&times;</div>' + $developers_list.val() + '<br></div>' );
+            $( '#selected_developers' ).append( '<div id="' + $developers_list.val() + '"><div class="btn remove-option-button">&times;</div>' + $developers_list.val() + '<br></div>' );
             $( '#developers' ).val( getDevsOnProject() );
         }
         $developers_list.val( 'default' );
 
     } );
 
-    $( '#selected_developers' ).on( 'click', '.remove-developer-button', function() {
+    $( '#selected_developers' ).on( 'click', '.remove-option-button', function() {
         $( this ).parent().remove();
     } );
 

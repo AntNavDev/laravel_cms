@@ -95,8 +95,13 @@ class TaskTimeController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy( $id )
     {
-        //
+        $time_entry = TaskTime::find( $id );
+
+        $time_entry->delete();
+
+        return redirect()->back();
+
     }
 }

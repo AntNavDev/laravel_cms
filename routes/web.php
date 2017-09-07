@@ -15,7 +15,7 @@ use App\Task;
 Route::resource( 'tasks', 'TaskController' );
 
 Route::resource( 'task_time', 'TaskTimeController', [ 'only' => [
-    'store'
+    'store', 'destroy'
 ] ] );
 
 Route::get('/', function() {
