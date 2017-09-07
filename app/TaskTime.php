@@ -14,7 +14,7 @@ class TaskTime extends Model
     protected $table = 'task_time';
 
     protected $fillable = [
-        'task_id', 'developers', 'description', 'hours'
+        'task_id', 'developer', 'description', 'hours'
     ];
 
     public function user()

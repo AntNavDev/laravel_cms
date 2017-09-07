@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\TaskTime;
+use App\User;
 use Illuminate\Http\Request;
 
 class TaskTimeController extends Controller
@@ -33,9 +35,24 @@ class TaskTimeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Task $task)
     {
-        //
+        $task_time = TaskTime::create( $request->toArray() );
+
+        $task_time->save();
+
+        $developers = User::all();
+
+        $time_entries = TaskTime::where( 'task_id', '=', $task->id )->get();
+
+        $developers_list = array();
+
+        foreach( $developers as $developer )
+        {
+            $developers_list[ $developer->getFullName() ] = $developer->getFullName();
+        }
+
+        return redirect()->route( 'tasks.edit', compact( 'task', 'time_entries', 'developers_list' ) );
     }
 
     /**
