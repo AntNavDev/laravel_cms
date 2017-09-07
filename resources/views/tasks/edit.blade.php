@@ -61,30 +61,32 @@
         </div>
 
         <div class="col-md-3">
-            <form action="{{ route( 'tasks.update', $task ) }}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field( 'PUT' ) }}
+            @if( Auth::user()->isAdmin() )
+                <form action="{{ route( 'tasks.update', $task ) }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field( 'PUT' ) }}
 
-                <h3 class="title-standout">Edit Task</h3>
-                <label for="task_name">Updated Task Name</label><br>
-                <input type="text" id="task_name" name="task_name" class="form-control task-input" placeholder=""><br><br>
-                <label for="client">Updated Client Name</label><br>
-                <input type="text" id="client" name="client" class="form-control task-input" placeholder=""><br><br>
-               <label for="developers_list">Update Developers</label><br>
-                <select id="developers_list" name="developers_list" class="form-control task-input">
-                    <option value="default">Select One</option>
-                    @foreach( $developers_list as $developer )
-                        <option value="{{ $developer }}">{{ $developer }}</option>
-                    @endforeach
-                </select><br><br>
-                <label for="selected_developers">Selected Developers</label><br>
-                <div id="selected_developers" name="selected_developers"></div>
-                <input id="developers" name="developers" class="task-input" hidden><br>
-                <label for="hours_to_build">Updated Hours To Build</label><br>
-                <input type="text" id="hours_to_build" name="hours_to_build" class="form-control task-input" placeholder=""><br><br>
+                    <h3 class="title-standout">Edit Task</h3>
+                    <label for="task_name">Updated Task Name</label><br>
+                    <input type="text" id="task_name" name="task_name" class="form-control task-input" placeholder=""><br><br>
+                    <label for="client">Updated Client Name</label><br>
+                    <input type="text" id="client" name="client" class="form-control task-input" placeholder=""><br><br>
+                   <label for="developers_list">Update Developers</label><br>
+                    <select id="developers_list" name="developers_list" class="form-control task-input">
+                        <option value="default">Select One</option>
+                        @foreach( $developers_list as $developer )
+                            <option value="{{ $developer }}">{{ $developer }}</option>
+                        @endforeach
+                    </select><br><br>
+                    <label for="selected_developers">Selected Developers</label><br>
+                    <div id="selected_developers" name="selected_developers"></div>
+                    <input id="developers" name="developers" class="task-input" hidden><br>
+                    <label for="hours_to_build">Updated Hours To Build</label><br>
+                    <input type="text" id="hours_to_build" name="hours_to_build" class="form-control task-input" placeholder=""><br><br>
 
-                <button class="btn add-task-button">Update Task Information</button>
-            </form>
+                    <button class="btn add-task-button">Update Task Information</button>
+                </form>
+            @endif
         </div>
 
     </div>

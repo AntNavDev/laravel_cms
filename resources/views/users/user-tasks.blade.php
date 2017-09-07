@@ -8,9 +8,11 @@
             <a href="{{ route( 'tasks.index' ) }}" class="selections btn">All Tasks</a>
         </div>
 
-        <div class="col-md-6">
-            <a href="{{ route( 'tasks.create' ) }}" class="align-right btn add-task-button">Add Task</a>
-        </div>
+        @if( Auth::user()->isAdmin() )
+            <div class="col-md-6">
+                <a href="{{ route( 'tasks.create' ) }}" class="align-right btn add-task-button">Add Task</a>
+            </div>
+        @endif
 
     </div>
 
@@ -45,11 +47,13 @@
                             <td>{{ $task->hours_to_build }}</td>
                             <td class="align-right">
                                 <a href="{{ route( 'tasks.edit', $task ) }}" class="btn task-button edit-task-button">Edit</a>
-                                <form action="{{ route( 'tasks.destroy', $task ) }}" method="POST" style="display: inline-block;">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn task-button remove-task-button" onclick="return confirm( 'Remove record \'{{ $task->task_name }}\'? Pressing \'ok\' will permanantly remove \'{{ $task->task_name }}\' from your database.' )">Remove</button>
-                                </form>
+                                @if( Auth::user()->isAdmin() )
+                                    <form action="{{ route( 'tasks.destroy', $task ) }}" method="POST" style="display: inline-block;">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn task-button remove-task-button" onclick="return confirm( 'Remove record \'{{ $task->task_name }}\'? Pressing \'ok\' will permanantly remove \'{{ $task->task_name }}\' from your database.' )">Remove</button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endif
