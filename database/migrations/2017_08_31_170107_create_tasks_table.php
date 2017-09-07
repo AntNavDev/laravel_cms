@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->string( 'task_name' );
             $table->string( 'client' );
-            $table->string( 'developers' )->references( 'users' )->on( 'id' );
+            $table->string( 'developers' )->references( 'id' )->on( 'users' );
             $table->unsignedDecimal( 'hours_to_build', 5, 2 );
             $table->timestamps();
         });

@@ -2,6 +2,8 @@
 
 @section( 'content' )
 
+    <script type="text/javascript" src="{{ URL::asset( 'js/developers-selection.js' ) }}"></script>
+
     <div class="row">
 
         <div class="col-md-2">
@@ -11,7 +13,10 @@
             <h4>Client Name</h4><br>
             {{ $task->client }}<br><br>
             <h4>Developers</h4><br>
-            {{ $task->developers }}<br><br>
+            @foreach( $task->developers as $developer )
+                {{ $developer }}<br>
+            @endforeach
+            <br><br>
             <h4>Hours Worked</h4><br>
             {{ $time_entries->sum( 'hours' ) }}<br><br>
             <h4>Hours To Build</h4><br>
@@ -36,14 +41,12 @@
                         <input type="hidden" id="task_id" name="task_id" value="{{ $task->id }}">
 
                         <label for="developer">Developer</label>
-                        {{-- FIX to list VVVVVVVVVVVVVVVVVVVVVVVVVVVVV --}}
                         <select id="developer" name="developer" class="form-control task-input">
                             <option value="default">Select One</option>
                             @foreach( $developers_list as $developer )
                                 <option value="{{ $developer }}">{{ $developer }}</option>
                             @endforeach
                         </select>
-                        {{-- FIX ^^^^^^^^^^^^^^^^^^^^^^^^^ --}}
                         <label for="description">Description of Work</label>
                         <input type="text" id="description" name="description" class="form-control task-input" placeholder="" required>
                         <label for="hours">Hours to Add</label>
@@ -67,13 +70,16 @@
                 <input type="text" id="task_name" name="task_name" class="form-control task-input" placeholder=""><br><br>
                 <label for="client">Updated Client Name</label><br>
                 <input type="text" id="client" name="client" class="form-control task-input" placeholder=""><br><br>
-                <label for="developers">Updated Developers</label><br>
-                <select id="developers" name="developers" class="form-control task-input">
+               <label for="developers_list">Update Developers</label><br>
+                <select id="developers_list" name="developers_list" class="form-control task-input">
                     <option value="default">Select One</option>
                     @foreach( $developers_list as $developer )
                         <option value="{{ $developer }}">{{ $developer }}</option>
                     @endforeach
                 </select><br><br>
+                <label for="selected_developers">Selected Developers</label><br>
+                <div id="selected_developers" name="selected_developers"></div>
+                <input id="developers" name="developers" class="task-input" hidden><br>
                 <label for="hours_to_build">Updated Hours To Build</label><br>
                 <input type="text" id="hours_to_build" name="hours_to_build" class="form-control task-input" placeholder=""><br><br>
 

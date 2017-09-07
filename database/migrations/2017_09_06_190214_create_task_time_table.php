@@ -16,7 +16,7 @@ class CreateTaskTimeTable extends Migration
         Schema::create('task_time', function (Blueprint $table) {
             $table->increments('id');
             $table->integer( 'task_id' );
-            $table->string( 'developers' )->references( 'users' )->on( 'id' );
+            $table->string( 'developer' )->references( 'id' )->on( 'users' );
             $table->string( 'description' );
             $table->unsignedDecimal( 'hours', 5, 2 );
             $table->timestamps();

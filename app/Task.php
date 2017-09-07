@@ -13,6 +13,15 @@ class Task extends Model
     */
     protected $table = 'tasks';
 
+    /*
+    * The attributes that should be casted to native types
+    *
+    * @var array
+    */
+    protected $casts = [
+        'developers' => 'array',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

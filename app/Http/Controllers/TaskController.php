@@ -51,7 +51,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = Task::create( $request->toArray() );
+        $developers = explode( ',', $request[ 'developers' ] );
+
+        $task = Task::create( [
+            'task_name' => $request[ 'task_name' ],
+            'client' => $request[ 'client' ],
+            'developers' => $developers,
+            'hours_to_build' => $request[ 'hours_to_build' ],
+        ] );
         $task->save();
 
         return redirect()->route( 'tasks.index' );
@@ -125,7 +132,6 @@ class TaskController extends Controller
                 'task_name' => 'required',
                 'client' => 'required',
                 'developers' => 'required',
-                'hours_worked' => 'required',
                 'hours_to_build' => 'required'
             ] );
 
@@ -135,7 +141,13 @@ class TaskController extends Controller
                 return redirect()->route( 'tasks.edit', $task )->withErrors( $validator )->withInput();
             }
 
-            $task->fill( $request->toArray() );
+            $developers = explode( ',', $request[ 'developers' ] );
+            $task->fill( [
+                'task_name' => $request[ 'task_name' ],
+                'client' => $request[ 'client' ],
+                'developers' => $developers,
+                'hours_to_build' => $request[ 'hours_to_build' ],
+            ] );
         }
         $task->save();
 

@@ -17,7 +17,8 @@ $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->name,
+        'last_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
@@ -25,12 +26,18 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 $factory->define( App\Task::class, function( Faker $faker ) {
+    $developers = [];
+    $dev_num = rand( 1, 3 );
+    for( $index = 0; $index <= $dev_num; $index++ )
+    {
+        $developers[] = $faker->name();
+    }
+
 
     return [
         'task_name'  => $faker->text( 35 ),
         'client'     => $faker->name(),
-        'developers' => $faker->name(),
-        'hours_worked' => round( $faker->randomFloat( NULL, 1, 200 ), 1 ),
+        'developers' => $developers,
         'hours_to_build' => round( $faker->randomFloat( NULL, 0, 250 ), 1 ),
     ];
 
