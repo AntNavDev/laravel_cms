@@ -51,6 +51,22 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Task::validateTask( $request );
+
+        if( $validator->fails() )
+        {
+
+            foreach( $validator->getMessageBag()->toArray() as $error_field => $error )
+            {
+                foreach( $error as $message )
+                {
+                    $request->session()->flash( 'alert-danger', ( $message ) );
+                }
+            }
+
+            return redirect()->route( 'tasks.create' )->withErrors( $validator )->withInput();
+        }
+
         $developers = explode( ',', $request[ 'developers' ] );
 
         $task = Task::create( [
@@ -108,47 +124,30 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+        $validator = Task::validateTask( $request );
 
-        if( isset( $request[ 'hours_increase' ] ) )
+        if( $validator->fails() )
         {
-            $validator = Validator::make( $request->all(), [
-                'hours_increase' => 'numeric|min:0.1'
-            ] );
 
-            if( $validator->fails() )
+            foreach( $validator->getMessageBag()->toArray() as $error_field => $error )
             {
-                $request->session()->flash( 'alert-danger', 'Additional hours must be numeric and greater than 0.' );
-                return redirect()->route( 'tasks.edit', $task )->withErrors( $validator )->withInput();
-            }
-            else
-            {
-                $task->hours_worked += $request[ 'hours_increase' ];
+                foreach( $error as $message )
+                {
+                    $request->session()->flash( 'alert-danger', ( $message ) );
+                }
             }
 
+            return redirect()->route( 'tasks.edit', $task )->withErrors( $validator )->withInput();
         }
-        else
-        {
-            $validator = Validator::make( $request->all(), [
-                'task_name' => 'required',
-                'client' => 'required',
-                'developers' => 'required',
-                'hours_to_build' => 'required'
-            ] );
 
-            if( $validator->fails() )
-            {
-                $request->session()->flash( 'alert-danger', 'All \'Edit Task\' fields must be filled out in order to update this task.' );
-                return redirect()->route( 'tasks.edit', $task )->withErrors( $validator )->withInput();
-            }
+        $developers = explode( ',', $request[ 'developers' ] );
+        $task->fill( [
+            'task_name' => $request[ 'task_name' ],
+            'client' => $request[ 'client' ],
+            'developers' => $developers,
+            'hours_to_build' => $request[ 'hours_to_build' ],
+        ] );
 
-            $developers = explode( ',', $request[ 'developers' ] );
-            $task->fill( [
-                'task_name' => $request[ 'task_name' ],
-                'client' => $request[ 'client' ],
-                'developers' => $developers,
-                'hours_to_build' => $request[ 'hours_to_build' ],
-            ] );
-        }
         $task->save();
 
         return redirect()->route( 'tasks.edit', $task );

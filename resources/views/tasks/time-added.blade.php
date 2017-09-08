@@ -34,7 +34,7 @@
 <div class="row">
     <div class="col-md-12">
         <h3>Enter Task Details</h3>
-        <form action="{{ route( 'task_time.store', $task ) }}" method="POST">
+        <form action="{{ route( 'task_time.store' ) }}" method="POST">
             {{ csrf_field() }}
 
             <input type="hidden" id="task_id" name="task_id" value="{{ $task->id }}">

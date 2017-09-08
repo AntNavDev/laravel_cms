@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Task;
 use App\TaskTime;
 use App\User;
+use Validator;
 use Illuminate\Http\Request;
 
 class TaskTimeController extends Controller
@@ -35,8 +36,30 @@ class TaskTimeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Task $task)
+    public function store(Request $request)
     {
+        $task = Task::find( $request->input( 'task_id' ) );
+
+        $validator = Validator::make( $request->all(), [
+            'task_id' => 'required',
+            'developer' => 'required',
+            'description' => 'required',
+            'hours' => 'required|numeric|min:0.1'
+        ] );
+
+        if( $validator->fails() )
+        {
+            foreach( $validator->getMessageBag()->toArray() as $error_field => $error )
+            {
+                foreach( $error as $message )
+                {
+                    $request->session()->flash( 'alert-danger', ( $message ) );
+                }
+            }
+
+            return redirect()->route( 'tasks.edit', $task )->withErrors( $validator )->withInput();
+        }
+
         $task_time = TaskTime::create( $request->toArray() );
 
         $task_time->save();
@@ -52,7 +75,7 @@ class TaskTimeController extends Controller
             $developers_list[ $developer->getFullName() ] = $developer->getFullName();
         }
 
-        return redirect()->back();
+        return redirect()->route( 'tasks.edit', $task );
     }
 
     /**
@@ -92,7 +115,7 @@ class TaskTimeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Task  $task
+     * @integer $id
      * @return \Illuminate\Http\Response
      */
     public function destroy( $id )
@@ -104,4 +127,5 @@ class TaskTimeController extends Controller
         return redirect()->back();
 
     }
+
 }

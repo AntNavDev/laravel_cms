@@ -26,4 +26,5 @@ class TaskTime extends Model
     {
         return $this->belongsTo( 'App\Task' );
     }
+
 }
