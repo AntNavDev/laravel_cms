@@ -1,2 +1,2 @@
 # laravel_cms
-A CMS in Laravel
+A Task Manager in Laravel
